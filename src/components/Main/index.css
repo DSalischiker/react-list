@@ -5,3 +5,10 @@
     justify-content: center;
     margin: 2em auto 0 auto;
 }
+
+.App-inputDiv {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+}

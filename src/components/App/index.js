@@ -63,7 +63,7 @@ class App extends React.Component {
   render() {
     //MOSTRAR DATA EN HTML (SOLO JSX)
     //IT EXECUTES AT THE START AND EVERY TIME THE STATE CHANGES
-    console.log('Se ejcutó el render');
+    console.log('Se ejecutó el render');
     return <div className="App">
       APP REACT
       <Main data={this.state.personas} />

@@ -5,7 +5,7 @@ const Input = (props) => {
 
 
     return (
-        <input className='App-input'>
+        <input className='App-input' placeholder='Ingrese nombre'>
 
 
         </input>

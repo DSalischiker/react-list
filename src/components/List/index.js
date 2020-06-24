@@ -8,7 +8,7 @@ const List = (props) => {
     console.log(props, 'Estoy en List');
     return (
         <ul className='App-List'>
-            Esta es mi lista
+
             <UserCard name={data[0].name} position={data[0].position} />
             <UserCard name={data[1].name} position={data[1].position} />
             <UserCard name={data[2].name} position={data[2].position} />
