@@ -1,0 +1,9 @@
+.App-Buttons {
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+}
+
+.button {
+    margin-right: 0.5em;
+}

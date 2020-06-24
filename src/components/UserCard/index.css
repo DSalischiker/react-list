@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.App-UserCard {
+    background-color: #FFF !important;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.UserCard-Data {
+    display: flex;
+}
+
+p {
+    text-align: start;
+}
+
+.card-content {
+    width: 80%;
+    margin: 1em auto;
+}
+
+.image {
+    margin-right: 1em;
+}
+
+img {
+    border-radius: 50%;
+
+
+}
+
+h1 {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+}
+
+.media {
+    justify-content: space-between;
+}
