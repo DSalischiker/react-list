@@ -6,11 +6,13 @@ import { Card } from "react-bulma-components";
 const UserCard = (props) => {
     const {
         employeeData,
-        handleEmployeeOTM
+        handleEmployeeOTM,
+        employeeOTM
     } = props;
 
+    const isMonthEmployee = employeeOTM === employeeData.id;
     return (
-        <Card className='App-UserCard'>
+        <Card className={`App-UserCard ${isMonthEmployee ? 'bg-yellow' : ''}`}>
             <div className='card-content'>
                 <div className='media'>
                     <div className='media-left UserCard-Data'>
@@ -25,7 +27,7 @@ const UserCard = (props) => {
                         </div>
                     </div>
 
-                    <Buttons id={employeeData.id} handleEmployeeOTM={handleEmployeeOTM} />
+                    <Buttons id={employeeData.id} handleEmployeeOTM={handleEmployeeOTM} isMonthEmployee={isMonthEmployee} />
                 </div>
 
             </div>

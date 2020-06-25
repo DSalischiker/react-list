@@ -7,3 +7,10 @@
 .button {
     margin-right: 0.5em;
 }
+
+.EOTM {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0.5em;
+}

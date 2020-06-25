@@ -22,7 +22,8 @@ class App extends React.Component {
     const sectorsArray = [...sectorsUnrepeated];
     this.state = {
       list: employees,
-      listBackup: employees
+      listBackup: employees,
+      employeeOTM: null
     };
     this.handleEmployeeOTM = this.handleEmployeeOTM.bind(this);
   }
@@ -49,7 +50,7 @@ class App extends React.Component {
     console.log('Se ejecutó el render');
     return <div className="App">
       APP REACT
-      <Main employeeData={this.state.list} handleEmployeeOTM={this.handleEmployeeOTM} />
+      <Main employeeData={this.state.list} handleEmployeeOTM={this.handleEmployeeOTM} employeeOTM={this.state.employeeOTM} />
     </div>
   }
 }

@@ -7,7 +7,8 @@ const Main = (props) => {
     console.log(props, 'Estoy en Main')
     const {
         employeeData,
-        handleEmployeeOTM
+        handleEmployeeOTM,
+        employeeOTM
     } = props;
 
     return (
@@ -17,7 +18,7 @@ const Main = (props) => {
                 <Input />
                 <SearchButton />
             </div>
-            <List employeeData={employeeData} handleEmployeeOTM={handleEmployeeOTM} />
+            <List employeeData={employeeData} handleEmployeeOTM={handleEmployeeOTM} employeeOTM={employeeOTM} />
         </main>
     )
 }

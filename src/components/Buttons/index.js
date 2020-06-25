@@ -6,14 +6,19 @@ import EmployeeButton from '../EmployeeButton';
 const Buttons = props => {
     const {
         id,
-        handleEmployeeOTM
+        handleEmployeeOTM,
+        isMonthEmployee
     } = props;
 
     return (
         <div className='App-Buttons'>
             <EditButton />
             <DeleteButton />
-            <EmployeeButton id={id} handleEmployeeOTM={handleEmployeeOTM} />
+            {!isMonthEmployee &&
+                <EmployeeButton id={id} handleEmployeeOTM={handleEmployeeOTM} />
+            }
+            {isMonthEmployee &&
+                <p className='EOTM'>Empleade del mes!</p>}
 
         </div>
     )
