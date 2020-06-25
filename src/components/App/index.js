@@ -2,62 +2,45 @@ import React from 'react';
 /* import logo from './logo.svg'; */
 import './index.css';
 import Main from '../Main';
-
+import faker from 'faker';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    faker.locale = 'es';
     console.log('Se ejecutó el constructor');
     //INITIALIZE STATE
+    const employees = Array.from({ length: 30 }, () => ({
+      name: faker.name.findName(),
+      sector: faker.name.jobArea(),
+      avatar: faker.image.avatar(),
+      id: faker.random.uuid(),
+    }))
+
+    const sectors = employees.map(({ sector }) => sector);
+    const sectorsUnrepeated = new Set(sectors);
+    const sectorsArray = [...sectorsUnrepeated];
     this.state = {
-      date: new Date(),
-      personas: [{
-        img: '',
-        name: 'Diego',
-        position: 'Estudiante'
-      },
-      {
-        img: '',
-        name: 'Diego2',
-        position: 'Estudiant'
-      },
-      {
-        img: '',
-        name: 'Diego3',
-        position: 'Estudian'
-      },
-      {
-        img: '',
-        name: 'Diego4',
-        position: 'Estudia'
-      }]
+      list: employees,
+      listBackup: employees
     };
+    this.handleEmployeeOTM = this.handleEmployeeOTM.bind(this);
+  }
+
+  handleEmployeeOTM(employeeId) {
+    this.setState({
+      employeeOTM: employeeId
+    });
+    setTimeout(() => {
+      console.log('EmployeeOTM: ', this.state.employeeOTM);
+    }, 1);
+
   }
 
   componentDidMount() {
     console.log('Se ejecutó CDM');
     //FETCH DE DATA
-    /* const personas = [{
-      img: '',
-      name: 'Diego',
-      position: 'Estudiante'
-    },
-    {
-      img: '',
-      name: 'Diego2',
-      position: 'Estudiant'
-    },
-    {
-      img: '',
-      name: 'Diego3',
-      position: 'Estudian'
-    },
-    {
-      img: '',
-      name: 'Diego4',
-      position: 'Estudia'
-    }]
-    this.setState({ personas }); */
+
   }
 
   render() {
@@ -66,7 +49,7 @@ class App extends React.Component {
     console.log('Se ejecutó el render');
     return <div className="App">
       APP REACT
-      <Main data={this.state.personas} />
+      <Main employeeData={this.state.list} handleEmployeeOTM={this.handleEmployeeOTM} />
     </div>
   }
 }

@@ -4,10 +4,14 @@ import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Button } from "react-bulma-components";
 
 const EmployeeButton = props => {
-    const handleClick = (event) => console.log('clicked employee', event);
+    const {
+        id,
+        handleEmployeeOTM
+    } = props;
+    /* const handleEmployeeOTM = (event) => console.log('employee of the month: ', id); */
     return (
-        <Button className='button is-info' onClick={handleClick}>
-            EmployeeButton
+        <Button className='button is-info' onClick={() => handleEmployeeOTM(id)}>
+            EmployeeOTM
         </Button>
     )
 }

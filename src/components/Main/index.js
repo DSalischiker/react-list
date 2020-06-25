@@ -6,7 +6,8 @@ import SearchButton from '../SearchButton';
 const Main = (props) => {
     console.log(props, 'Estoy en Main')
     const {
-        data
+        employeeData,
+        handleEmployeeOTM
     } = props;
 
     return (
@@ -16,7 +17,7 @@ const Main = (props) => {
                 <Input />
                 <SearchButton />
             </div>
-            <List data={data} />
+            <List employeeData={employeeData} handleEmployeeOTM={handleEmployeeOTM} />
         </main>
     )
 }
