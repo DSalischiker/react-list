@@ -6,7 +6,7 @@ const EditButton = props => {
     const handleClick = (event) => console.log('clicked edit', event);
     return (
         <Button className='button is-primary' onClick={handleClick}>
-            Edit
+            Editar
         </Button>
 
     )

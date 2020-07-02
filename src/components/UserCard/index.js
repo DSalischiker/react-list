@@ -6,6 +6,7 @@ import { Card } from "react-bulma-components";
 const UserCard = (props) => {
     const {
         employeeData,
+        handleDeleteEmployee,
         handleEmployeeOTM,
         employeeOTM
     } = props;
@@ -27,7 +28,7 @@ const UserCard = (props) => {
                         </div>
                     </div>
 
-                    <Buttons id={employeeData.id} handleEmployeeOTM={handleEmployeeOTM} isMonthEmployee={isMonthEmployee} />
+                    <Buttons id={employeeData.id} handleDeleteEmployee={handleDeleteEmployee} handleEmployeeOTM={handleEmployeeOTM} isMonthEmployee={isMonthEmployee} />
                 </div>
 
             </div>

@@ -6,6 +6,7 @@ import EmployeeButton from '../EmployeeButton';
 const Buttons = props => {
     const {
         id,
+        handleDeleteEmployee,
         handleEmployeeOTM,
         isMonthEmployee
     } = props;
@@ -13,7 +14,7 @@ const Buttons = props => {
     return (
         <div className='App-Buttons'>
             <EditButton />
-            <DeleteButton />
+            <DeleteButton id={id} handleDeleteEmployee={handleDeleteEmployee} />
             {!isMonthEmployee &&
                 <EmployeeButton id={id} handleEmployeeOTM={handleEmployeeOTM} />
             }

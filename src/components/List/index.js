@@ -4,6 +4,7 @@ import UserCard from '../UserCard';
 const List = (props) => {
     const {
         employeeData,
+        handleDeleteEmployee,
         handleEmployeeOTM,
         employeeOTM
     } = props;
@@ -14,7 +15,7 @@ const List = (props) => {
         <ul className='App-List'>
             {
                 employeeData.map((employee) =>
-                    <UserCard employeeData={employee} key={employee.id} handleEmployeeOTM={handleEmployeeOTM} employeeOTM={employeeOTM} />
+                    <UserCard employeeData={employee} handleDeleteEmployee={handleDeleteEmployee} key={employee.id} handleEmployeeOTM={handleEmployeeOTM} employeeOTM={employeeOTM} />
                 )
             }
         </ul>

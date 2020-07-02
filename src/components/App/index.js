@@ -21,11 +21,14 @@ class App extends React.Component {
     const sectorsUnrepeated = new Set(sectors);
     const sectorsArray = [...sectorsUnrepeated];
     this.state = {
-      list: employees,
+      employees: employees,
       listBackup: employees,
       employeeOTM: null
     };
     this.handleEmployeeOTM = this.handleEmployeeOTM.bind(this);
+    this.handleAddEmployeeChange = this.handleAddEmployeeChange.bind(this);
+    this.handleAddEmployeeSubmit = this.handleAddEmployeeSubmit.bind(this);
+    this.handleDeleteEmployee = this.handleDeleteEmployee.bind(this);
   }
 
   handleEmployeeOTM(employeeId) {
@@ -36,6 +39,36 @@ class App extends React.Component {
       console.log('EmployeeOTM: ', this.state.employeeOTM);
     }, 1);
 
+  }
+
+  handleAddEmployeeChange = event => {
+    //Destructure value from input
+    const { value } = event.target;
+    this.setState({ employeeName: value });
+  }
+
+  handleAddEmployeeSubmit = event => {
+    event.preventDefault();
+    //destructure employees and employeeName from state
+    const { employees, employeeName } = this.state;
+
+    const newEmployee = {
+      name: employeeName,
+      sector: faker.name.jobArea(),
+      avatar: faker.image.avatar(),
+      id: faker.random.uuid()
+    }
+
+    //new employeelist copying the current list and the added employee
+    const newList = [newEmployee, ...employees];
+    //set to state
+    this.setState({ employees: newList });
+  }
+
+  handleDeleteEmployee(id) {
+    const { employees } = this.state;
+    const newListWithoutDeleted = employees.filter(employee => employee.id !== id);
+    this.setState({ employees: newListWithoutDeleted });
   }
 
   componentDidMount() {
@@ -50,7 +83,7 @@ class App extends React.Component {
     console.log('Se ejecutó el render');
     return <div className="App">
       APP REACT
-      <Main employeeData={this.state.list} handleEmployeeOTM={this.handleEmployeeOTM} employeeOTM={this.state.employeeOTM} />
+      <Main employeeData={this.state.employees} handleAddEmployeeChange={this.handleAddEmployeeChange} handleAddEmployeeSubmit={this.handleAddEmployeeSubmit} handleDeleteEmployee={this.handleDeleteEmployee} handleEmployeeOTM={this.handleEmployeeOTM} employeeOTM={this.state.employeeOTM} />
     </div>
   }
 }

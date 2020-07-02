@@ -11,7 +11,7 @@ const EmployeeButton = props => {
     /* const handleEmployeeOTM = (event) => console.log('employee of the month: ', id); */
     return (
         <Button className='button is-info' onClick={() => handleEmployeeOTM(id)}>
-            EmployeeOTM
+            Empleade del mes
         </Button>
     )
 }
