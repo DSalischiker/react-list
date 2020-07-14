@@ -1,3 +1,22 @@
+.container_form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.container_form select {
+    margin-top: 1em;
+    width: 20%;
+    padding: 0.5em;
+    color: #333;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #DDD;
+
+}
+
 form {
     display: flex;
     width: 100%;
