@@ -1,16 +1,11 @@
 import React from 'react';
 import './index.css';
-import Dropdown from '../Dropdown';
 
 const Form = (props) => {
     const {
         employeeName,
         handleAddEmployeeSubmit,
-        handleAddEmployeeChange,
-        sectors,
-        selectedSector,
-        onSelectSector,
-        onRemoveSelectedSector
+        handleAddEmployeeChange
     } = props;
 
     return (
@@ -25,15 +20,13 @@ const Form = (props) => {
                 />
                 <button
                     className='button is-success'
-                    type="submit">Agregar empleade</button>
+                    type="submit">
+                    <span>Agregar empleade</span>
+                    <span className='icon is-small'>
+                        <i className='fas fa-plus' />
+                    </span></button>
 
             </form>
-            <Dropdown
-                sectors={sectors}
-                selectedSector={selectedSector}
-                onSelectSector={onSelectSector}
-                onRemoveSelectedSector={onRemoveSelectedSector}
-            />
         </div>
     )
 }

@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   background-color: #EEE;
+  padding-top: 1em;
 }
 
 .App-logo {
@@ -37,4 +38,42 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App-Dropdown {
+  margin: 0 auto;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.App-Dropdown h2 {
+  font-size: 1em;
+  font-weight: 500;
+  width: fit-content;
+  margin-bottom: 0.5em;
+}
+
+.App-Dropdown button {
+  font-size: 1em;
+  font-weight: 500;
+  width: fit-content;
+
+}
+
+select {
+  margin-top: 1em;
+  width: fit-content;
+  padding: 0.5em;
+  color: #333;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #DDD;
+
+}
+
+.filter {
+  display: flex;
+  justify-content: flex-start;
 }

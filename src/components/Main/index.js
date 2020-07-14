@@ -11,11 +11,7 @@ const Main = (props) => {
         handleAddEmployeeSubmit,
         handleDeleteEmployee,
         handleEmployeeOTM,
-        employeeOTM,
-        sectors,
-        selectedSector,
-        onSelectSector,
-        onRemoveSelectedSector
+        employeeOTM
     } = props;
 
     return (
@@ -25,10 +21,7 @@ const Main = (props) => {
                 <Form
                     handleAddEmployeeChange={handleAddEmployeeChange}
                     handleAddEmployeeSubmit={handleAddEmployeeSubmit}
-                    sectors={sectors}
-                    selectedSector={selectedSector}
-                    onSelectSector={onSelectSector}
-                    onRemoveSelectedSector={onRemoveSelectedSector}
+
                 />
             </div>
             <List

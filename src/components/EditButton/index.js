@@ -6,7 +6,10 @@ const EditButton = props => {
     const handleClick = (event) => console.log('clicked edit', event);
     return (
         <Button className='button is-primary' onClick={handleClick}>
-            Editar
+            <span>Editar</span>
+            <span className='icon is-small'>
+                <i className='fas fa-edit' />
+            </span>
         </Button>
 
     )

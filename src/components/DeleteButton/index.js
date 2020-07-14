@@ -11,7 +11,10 @@ const DeleteButton = props => {
 
     return (
         <Button className='button is-outlined is-danger' onClick={() => handleDeleteEmployee(id)}>
-            Eliminar
+            <span>Eliminar</span>
+            <span className='icon is-small'>
+                <i className='fas fa-trash' />
+            </span>
         </Button>
     )
 }

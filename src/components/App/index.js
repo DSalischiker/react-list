@@ -2,7 +2,6 @@ import React from 'react';
 /* import logo from './logo.svg'; */
 import './index.css';
 import Main from '../Main';
-import Dropdown from '../Dropdown';
 import faker from 'faker';
 
 class App extends React.Component {
@@ -34,8 +33,8 @@ class App extends React.Component {
     this.handleAddEmployeeChange = this.handleAddEmployeeChange.bind(this);
     this.handleAddEmployeeSubmit = this.handleAddEmployeeSubmit.bind(this);
     this.handleDeleteEmployee = this.handleDeleteEmployee.bind(this);
-    this.handleSelectSector = this.handleSelectSector.bind(this);
-    this.handleRemoveSelectedSector = this.handleRemoveSelectedSector.bind(this);
+    /* this.handleSelectSector = this.handleSelectSector.bind(this);
+    this.handleRemoveSelectedSector = this.handleRemoveSelectedSector.bind(this); */
   }
 
   handleEmployeeOTM(employeeId) {
@@ -101,18 +100,24 @@ class App extends React.Component {
   }
 
   render() {
+    const {
+      sectors,
+      selectedSector,
+    } = this.state;
+
     //MOSTRAR DATA EN HTML (SOLO JSX)
     //IT EXECUTES AT THE START AND EVERY TIME THE STATE CHANGES
     console.log('Se ejecutó el render');
     return <div className="App">
-      APP REACT
       {/* <Dropdown sectors={this.state.sectors}></Dropdown> */}
       {/* <Dropdown sectors={this.state.sectors} /> */}
       <Dropdown
         sectors={sectors}
         selectedSector={selectedSector}
         onSelectSector={this.handleSelectSector}
-        onRemoveSelectedSector={this.handleRemoveSelectedSector}></Dropdown>
+        onRemoveSelectedSector={this.handleRemoveSelectedSector}>
+
+      </Dropdown>
       <Main
         employeeData={this.state.employees}
         handleAddEmployeeChange={this.handleAddEmployeeChange}
@@ -120,10 +125,7 @@ class App extends React.Component {
         handleDeleteEmployee={this.handleDeleteEmployee}
         handleEmployeeOTM={this.handleEmployeeOTM}
         employeeOTM={this.state.employeeOTM}
-        sectors={this.state.sectors}
-        selectedSector={this.state.selectedSector}
-        onSelectSector={this.handleSelectSector}
-        onRemoveSelectedSector={this.handleRemoveSelectedSector}
+
       />
     </div>
   }
@@ -137,36 +139,40 @@ const Dropdown = props => {
     onRemoveSelectedSector
   } = props;
   return (
-    <div>
-      <select name='sectors'>
+    <div className='App-Dropdown'>
+      <h2>Filtrar por sector</h2>
+      <div className='filter'>
+        <select name='sectors' onChange={event => onSelectSector(event.target.value)}>
+          {
+            sectors.map((sector) =>
+              <option
+                key={sector}
+                value={sector}
+              /* onChange={() => onSelectSector(sector)} */>
+                {sector}
+
+              </option>
+            )
+          }
+        </select>
+
         {
-          sectors.map((sector) =>
-            <option
-              key={sector}
-              value={sector}
-              onClick={() => onSelectSector(sector)}>
-              {sector}
-            </option>
+          selectedSector && (
+            <button
+              className='button'
+              aria-haspopup='true'
+              aria-controls='dropdown-menu'
+              onClick={onRemoveSelectedSector}
+              style={{ marginLeft: '15px' }}
+            >
+              <span>{selectedSector}</span>
+              <span className='icon is-small'>
+                <i className='fas fa-trash-alt' aria-hidden='true' />
+              </span>
+            </button>
           )
         }
-      </select>
-
-      {
-        selectedSector && (
-          <button
-            className='button'
-            aria-haspopup='true'
-            aria-controls='dropdown-menu'
-            onClick={onRemoveSelectedSector}
-            style={{ marginLeft: '15px' }}
-          >
-            <span>{selectedSector}</span>
-            <span className='icon is-small'>
-              <i className='fas fa-trash-alt' aria-hidden='true' />
-            </span>
-          </button>
-        )
-      }
+      </div>
     </div>
   )
 }
