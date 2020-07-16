@@ -9,9 +9,6 @@ const List = (props) => {
         employeeOTM,
         handleEditEmployee
     } = props;
-
-
-    console.log(props, 'Estoy en List');
     return (
         <ul className='App-List'>
             {

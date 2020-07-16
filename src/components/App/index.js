@@ -7,9 +7,7 @@ import faker from 'faker';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    /* this.optionDefault = React.createRef(); */
     faker.locale = 'es';
-    console.log('Se ejecutó el constructor');
     //INITIALIZE STATE
     const employees = Array.from({ length: 30 }, () => ({
       name: faker.name.findName(),
@@ -28,6 +26,7 @@ class App extends React.Component {
       employeeName: '',
       sectors: sectorsArray,
       selectedSector: '',
+      optionState: true,
       employeeToEdit: {},
       employeeToEditName: '',
       modalActive: false
@@ -37,8 +36,6 @@ class App extends React.Component {
     this.handleAddEmployeeSubmit = this.handleAddEmployeeSubmit.bind(this);
     this.handleDeleteEmployee = this.handleDeleteEmployee.bind(this);
     this.handleEditEmployee = this.handleEditEmployee.bind(this);
-    /* this.handleSelectSector = this.handleSelectSector.bind(this);
-    this.handleRemoveSelectedSector = this.handleRemoveSelectedSector.bind(this); */
   }
 
   handleEmployeeOTM(employeeId) {
@@ -46,7 +43,6 @@ class App extends React.Component {
       employeeOTM: employeeId
     });
     setTimeout(() => {
-      console.log('EmployeeOTM: ', this.state.employeeOTM);
     }, 1);
 
   }
@@ -85,25 +81,27 @@ class App extends React.Component {
   }
 
   handleSelectSector = sector => {
-    console.log('Estoy en handleSelectSector');
     const { listBackup } = this.state;
     const listFilteredBySector = listBackup.filter(employee => employee.sector === sector);
     this.setState({
       selectedSector: sector,
-      employees: listFilteredBySector
+      employees: listFilteredBySector,
+      optionState: false
     });
   }
 
   handleRemoveSelectedSector = () => {
-    console.log('Estoy en handleRemoveSelectedSector');
-    this.setState(prevState => ({ employees: prevState.listBackup, selectedSector: '' }));
+    this.setState(prevState => ({
+      employees: prevState.listBackup,
+      selectedSector: '',
+      optionState: true
+    }));
   }
 
   handleEditEmployee = id => {
     const { employees } = this.state;
     const selectedEmployee = employees.find(employee => employee.id === id);
     this.setState({ employeeToEdit: selectedEmployee });
-    console.log(selectedEmployee);
     this.setState({
       modalActive: true,
       employeeToEditName: selectedEmployee.name
@@ -138,9 +136,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('Se ejecutó CDM');
     //FETCH DE DATA
-
   }
 
   render() {
@@ -153,15 +149,14 @@ class App extends React.Component {
 
     //MOSTRAR DATA EN HTML (SOLO JSX)
     //IT EXECUTES AT THE START AND EVERY TIME THE STATE CHANGES
-    console.log('Se ejecutó el render');
     return <div className="App">
-      {/* <Dropdown sectors={this.state.sectors}></Dropdown> */}
-      {/* <Dropdown sectors={this.state.sectors} /> */}
+
       <Dropdown
         sectors={sectors}
         selectedSector={selectedSector}
         onSelectSector={this.handleSelectSector}
-        onRemoveSelectedSector={this.handleRemoveSelectedSector}>
+        onRemoveSelectedSector={this.handleRemoveSelectedSector}
+        optionState={this.state.optionState}>
 
       </Dropdown>
       {modalActive && (
@@ -211,20 +206,21 @@ const Dropdown = props => {
     sectors,
     selectedSector,
     onSelectSector,
-    onRemoveSelectedSector
+    onRemoveSelectedSector,
+    optionState
   } = props;
   return (
     <div className='App-Dropdown'>
       <h2>Filtrar por sector</h2>
       <div className='filter'>
         <select name='sectors' onChange={event => onSelectSector(event.target.value)}>
-          <option selected disabled>Elegí un sector</option>
+          <option selected={optionState} disabled>Elegí un sector</option>
           {
             sectors.map((sector) =>
               <option
                 key={sector}
                 value={sector}
-              /* onChange={() => onSelectSector(sector)} */>
+              >
                 {sector}
 
               </option>
@@ -253,24 +249,3 @@ const Dropdown = props => {
   )
 }
 export default App;
-/* function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-} */
-

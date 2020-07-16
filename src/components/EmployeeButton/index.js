@@ -8,7 +8,6 @@ const EmployeeButton = props => {
         id,
         handleEmployeeOTM
     } = props;
-    /* const handleEmployeeOTM = (event) => console.log('employee of the month: ', id); */
     return (
         <Button className='button is-info' onClick={() => handleEmployeeOTM(id)}>
             <span>Empleade del mes</span>

@@ -4,7 +4,6 @@ import List from '../List';
 import Form from '../Form';
 
 const Main = (props) => {
-    console.log(props, 'Estoy en Main')
     const {
         employeeData,
         handleAddEmployeeChange,
@@ -17,7 +16,6 @@ const Main = (props) => {
 
     return (
         <main className='App-Main'>
-            {/* <h1>Lista de empleades</h1> */}
             <div className='App-inputDiv'>
                 <Form
                     handleAddEmployeeChange={handleAddEmployeeChange}

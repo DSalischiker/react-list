@@ -7,8 +7,6 @@ const EditButton = props => {
         handleEditEmployee,
         id
     } = props;
-    console.log(handleEditEmployee);
-    /* const handleClickEdit = (event) => console.log('clicked edit', event); */
     return (
         <Button
             className='button is-primary'
