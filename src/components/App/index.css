@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   background-color: #EEE;
+  min-height: 100vh;
   padding-top: 1em;
 }
 
