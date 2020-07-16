@@ -6,7 +6,8 @@ const List = (props) => {
         employeeData,
         handleDeleteEmployee,
         handleEmployeeOTM,
-        employeeOTM
+        employeeOTM,
+        handleEditEmployee
     } = props;
 
 
@@ -15,7 +16,14 @@ const List = (props) => {
         <ul className='App-List'>
             {
                 employeeData.map((employee) =>
-                    <UserCard employeeData={employee} handleDeleteEmployee={handleDeleteEmployee} key={employee.id} handleEmployeeOTM={handleEmployeeOTM} employeeOTM={employeeOTM} />
+                    <UserCard
+                        employeeData={employee}
+                        handleDeleteEmployee={handleDeleteEmployee}
+                        key={employee.id}
+                        handleEmployeeOTM={handleEmployeeOTM}
+                        employeeOTM={employeeOTM}
+                        handleEditEmployee={handleEditEmployee}
+                    />
                 )
             }
         </ul>

@@ -11,12 +11,13 @@ const Main = (props) => {
         handleAddEmployeeSubmit,
         handleDeleteEmployee,
         handleEmployeeOTM,
-        employeeOTM
+        employeeOTM,
+        handleEditEmployee
     } = props;
 
     return (
         <main className='App-Main'>
-            <h1>Lista de empleades</h1>
+            {/* <h1>Lista de empleades</h1> */}
             <div className='App-inputDiv'>
                 <Form
                     handleAddEmployeeChange={handleAddEmployeeChange}
@@ -29,6 +30,7 @@ const Main = (props) => {
                 handleDeleteEmployee={handleDeleteEmployee}
                 handleEmployeeOTM={handleEmployeeOTM}
                 employeeOTM={employeeOTM}
+                handleEditEmployee={handleEditEmployee}
             />
         </main>
     )

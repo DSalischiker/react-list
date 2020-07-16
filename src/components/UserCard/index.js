@@ -8,7 +8,8 @@ const UserCard = (props) => {
         employeeData,
         handleDeleteEmployee,
         handleEmployeeOTM,
-        employeeOTM
+        employeeOTM,
+        handleEditEmployee
     } = props;
 
     const isMonthEmployee = employeeOTM === employeeData.id;
@@ -28,7 +29,13 @@ const UserCard = (props) => {
                         </div>
                     </div>
 
-                    <Buttons id={employeeData.id} handleDeleteEmployee={handleDeleteEmployee} handleEmployeeOTM={handleEmployeeOTM} isMonthEmployee={isMonthEmployee} />
+                    <Buttons
+                        id={employeeData.id}
+                        handleDeleteEmployee={handleDeleteEmployee}
+                        handleEmployeeOTM={handleEmployeeOTM}
+                        isMonthEmployee={isMonthEmployee}
+                        handleEditEmployee={handleEditEmployee}
+                    />
                 </div>
 
             </div>

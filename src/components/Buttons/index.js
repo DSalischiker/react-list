@@ -8,12 +8,13 @@ const Buttons = props => {
         id,
         handleDeleteEmployee,
         handleEmployeeOTM,
-        isMonthEmployee
+        isMonthEmployee,
+        handleEditEmployee
     } = props;
 
     return (
         <div className='App-Buttons'>
-            <EditButton />
+            <EditButton handleEditEmployee={handleEditEmployee} id={id} />
             <DeleteButton id={id} handleDeleteEmployee={handleDeleteEmployee} />
             {!isMonthEmployee &&
                 <EmployeeButton id={id} handleEmployeeOTM={handleEmployeeOTM} />
